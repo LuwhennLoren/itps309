@@ -1,0 +1,16 @@
+{% load static %}
+<nav class="navbar">
+    <div class="navbar-logo">
+        <a href="{% url 'user_profile' %}">
+            <img src="{% static 'img/logo.png' %}" alt="Logo">
+        </a>
+    </div>
+
+    <ul class="navbar-links">
+        {% if user.is_authenticated %}
+            <li><a href="{% url 'user_profile' %}">My Profile</a></li>
+            <li><a href="{% url 'enrollment_form' %}">Enrollment Form</a></li>
+            <li><a href="{% url 'logout_user' %}">Logout</a></li>
+        {% endif %}
+    </ul>
+</nav>

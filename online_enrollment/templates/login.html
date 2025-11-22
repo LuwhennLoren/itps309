@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block body_class %}login-register{% endblock %}
+
+{% block title %}Login Account{% endblock %}
+
+{% block content %}
+{% load static %}
+
+<div class="login-page">
+    <div class="shifu-section">
+        <p class="shifu-text">Are you ready to learn Kung Fu?</p>
+        <img src="{% static 'img/shifu.png' %}" alt="Master Shifu" class="shifu-img">
+    </div>
+
+    <div class="login-container">
+        <h2>Login Account</h2>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_username">Username:</label>
+                {{ form.username }}
+            </div>
+            <div class="form-group">
+                <label for="id_password">Password:</label>
+                {{ form.password }}
+            </div>
+            <button type="submit">Login</button>
+        </form>
+
+        <p>
+            Don't have an account? <a href="{% url 'register_user' %}">Register</a>
+        </p>
+    </div>
+</div>
+
+</div>
+
+{% endblock %}

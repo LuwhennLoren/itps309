@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Student Background{% endblock %}
+
+{% block content %}
+<h2>Family Background</h2>
+
+{% if background %}
+    <p><strong>Mother’s Maiden Name:</strong> {{ background.mother_maiden_name }}</p>
+    <p><strong>Father’s Name:</strong> {{ background.father_name }}</p>
+    <p><strong>Guardian Name:</strong> {{ background.guardian_name }}</p>
+    <p><strong>Mother’s Occupation:</strong> {{ background.mother_occupation }}</p>
+    <p><strong>Father’s Occupation:</strong> {{ background.father_occupation }}</p>
+{% else %}
+    <p>No background info found.</p>
+{% endif %}
+{% endblock %}
+
+
+<!-- {% extends "base.html" %}
+{% block title %}Family Background{% endblock %}
+
+{% block content %}
+<h1>Family Background</h1>
+
+{% for fam in backgrounds %}
+    <strong>Father:</strong> {{ fam.father_name }} ({{ fam.father_occupation }}) <br>
+    <strong>Mother:</strong> {{ fam.mother_name }} ({{ fam.mother_occupation }}) <br>
+    <strong>Guardian:</strong> {{ fam.guardian_name }} <br>
+    <hr>
+{% endfor %}
+{% endblock %} -->
+

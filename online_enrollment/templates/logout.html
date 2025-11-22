@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block body_class %}main-site{% endblock %}
+{% block title %}Logged Out{% endblock %}
+
+{% block content %}
+<div class="logout-container">
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="logout-message">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+
+    <div class="logout-content">
+        <a href="{% url 'login_user' %}" class="login-again-btn">Login Again</a>
+    </div>
+
+</div>
+{% endblock %}

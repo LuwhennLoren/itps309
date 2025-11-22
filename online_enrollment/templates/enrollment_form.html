@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block body_class %}main-site{% endblock %}
+
+{% block title %}Enrollment Form{% endblock %}
+
+{% block content %}
+
+<div class="enrollment-title">
+    <h2>Enrollment Form</h2>
+</div>
+
+<div class="enrollment-container">
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <h2>Personal Information</h2>
+    {{ info_form.as_p }}
+
+    <h2>Family Background</h2>
+    {{ bg_form.as_p }}
+
+    <h2>Educational Background</h2>
+    {{ edu_form.as_p }}
+
+    <h2>Subjects</h2>
+    {{ sub_form.as_p }}
+
+    <button type="submit" name="add_subject">Add Another Subject</button>
+    <button type="submit" name="submit_form">Submit Enrollment</button>
+</form>
+</div>
+{% endblock %}

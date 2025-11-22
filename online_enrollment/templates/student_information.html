@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Student Information{% endblock %}
+
+{% block content %}
+<h2>Personal Information</h2>
+
+{% if info %}
+    <p><strong>Firstname:</strong> {{ info.firstname }}</p>
+    <p><strong>Middlename:</strong> {{ info.middlename }}</p>
+    <p><strong>Lastname:</strong> {{ info.lastname }}</p>
+    <p><strong>Age:</strong> {{ info.age }}</p>
+    <p><strong>Nationality:</strong> {{ info.nationality }}</p>
+{% else %}
+    <p>No personal information found.</p>
+{% endif %}
+
+{% endblock %}

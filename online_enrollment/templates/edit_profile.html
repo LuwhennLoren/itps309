@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block body_class %}main-site{% endblock %}
+{% block title %}Edit Profile{% endblock %}
+
+{% block content %}
+
+<h1 class="enrollment-title">Edit Profile</h1>
+
+<div class="enrollment-container">
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <h2>Personal Information</h2>
+        <div class="form-group">
+            {{ info_form.as_p }}
+        </div>
+
+        <h2>Family Background</h2>
+        <div class="form-group">
+            {{ bg_form.as_p }}
+        </div>
+
+        <h2>Educational Background</h2>
+        <div class="form-group">
+            {{ edu_form.as_p }}
+        </div>
+
+        <h2>Subjects</h2>
+        {{ formset.management_form }}
+
+        {% for form in formset %}
+            <div class="subject-form">
+
+                {# Loop through fields and hide the ID field #}
+                {% for field in form %}
+                    {% if field.name == "id" %}
+                        {{ field }} {# Hidden ID field, no label #}
+                    {% elif field.name != "DELETE" %}
+                        <p>{{ field.label_tag }} {{ field }}</p>
+                    {% endif %}
+                {% endfor %}
+
+                {% if form.instance.pk %}
+                    <div class="delete-wrapper">
+                        <label class="delete-label">
+                            {{ form.DELETE }} Delete
+                        </label>
+                    </div>
+                {% endif %}
+
+            </div>
+        {% endfor %}
+
+
+
+        <button type="submit">Save Changes</button>
+    </form>
+
+</div>
+
+{% endblock %}

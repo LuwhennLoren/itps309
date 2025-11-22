@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Subject{% endblock %}
+
+{% block content %}
+<div class="register-page"> <!-- reuse your container styles -->
+    <div class="register-container">
+
+        <h2>Add Subject</h2>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.subject_code.label_tag }}
+                {{ form.subject_code }}
+                {% for error in form.subject_code.errors %}
+                    <span class="helptext" style="color:red">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                {{ form.subject_description.label_tag }}
+                {{ form.subject_description }}
+                {% for error in form.subject_description.errors %}
+                    <span class="helptext" style="color:red">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                {{ form.unit.label_tag }}
+                {{ form.unit }}
+                {% for error in form.unit.errors %}
+                    <span class="helptext" style="color:red">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                {{ form.day.label_tag }}
+                {{ form.day }}
+                {% for error in form.day.errors %}
+                    <span class="helptext" style="color:red">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                {{ form.professor.label_tag }}
+                {{ form.professor }}
+                {% for error in form.professor.errors %}
+                    <span class="helptext" style="color:red">{{ error }}</span>
+                {% endfor %}
+            </div>
+
+            <button>Add Subject</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

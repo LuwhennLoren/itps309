@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% block body_class %}main-site{% endblock %}
+
+{% block title %}My Profile{% endblock %}
+
+{% load static %}
+{% block content %}
+
+<div class="profile-title">
+    <h2>Profile Overview</h2>
+</div>
+
+<div class="profile-container">
+
+    <!-- Top section: profile image + personal info -->
+    <div class="profile-top">
+        <div class="profile-img-wrapper">
+            {% if info.profile_image %}
+                <img src="{{ info.profile_image.url }}" alt="Profile Picture" class="profile-pic">
+            {% else %}
+                <img src="{% static 'img/default_profile.png' %}" alt="Default Profile Picture" class="profile-pic">
+            {% endif %}
+        </div>
+
+        <div class="profile-info">
+            <h2>Personal Information</h2>
+            {% if info %}
+                <label>Name:</label>
+                <input type="text" value="{{ info.firstname }} {{ info.middlename }} {{ info.lastname }}" readonly>
+
+                <label>Age:</label>
+                <input type="text" value="{{ info.age }}" readonly>
+
+                <label>Nationality:</label>
+                <input type="text" value="{{ info.nationality }}" readonly>
+            {% else %}
+                <input type="text" value="No personal information available" readonly>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Family Background -->
+    <div class="profile-section">
+        <h2>Family Background</h2>
+        {% if background %}
+            <label>Mother's Maiden Name:</label>
+            <input type="text" value="{{ background.mother_maiden_name }}" readonly>
+
+            <label>Father's Name:</label>
+            <input type="text" value="{{ background.father_name }}" readonly>
+
+            <label>Guardian's Name:</label>
+            <input type="text" value="{{ background.guardian_name }}" readonly>
+
+            <label>Mother's Occupation:</label>
+            <input type="text" value="{{ background.mother_occupation }}" readonly>
+
+            <label>Father's Occupation:</label>
+            <input type="text" value="{{ background.father_occupation }}" readonly>
+        {% else %}
+            <input type="text" value="No family background information" readonly>
+        {% endif %}
+    </div>
+
+    <!-- Educational Background -->
+    <div class="profile-section">
+        <h2>Educational Background</h2>
+        {% if education %}
+            <label>Elementary:</label>
+            <input type="text" value="{{ education.elementary_school }}" readonly>
+
+            <label>High School:</label>
+            <input type="text" value="{{ education.HS_school }}" readonly>
+
+            <label>Senior High School:</label>
+            <input type="text" value="{{ education.SHS_school }}" readonly>
+
+            <label>College:</label>
+            <input type="text" value="{{ education.College_school }}" readonly>
+
+            <label>Elementary Award:</label>
+            <input type="text" value="{{ education.elementary_award }}" readonly>
+        {% else %}
+            <input type="text" value="No educational information" readonly>
+        {% endif %}
+    </div>
+
+    <!-- Subjects -->
+    <div class="profile-section">
+        <h2>Subjects</h2>
+        {% if subjects %}
+            <table class="subjects-table">
+                <thead>
+                    <tr>
+                        <th>Subject Code</th>
+                        <th>Description</th>
+                        <th>Units</th>
+                        <th>Day</th>
+                        <th>Professor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for subject in subjects %}
+                        <tr>
+                            <td>{{ subject.subject_code }}</td>
+                            <td>{{ subject.subject_description }}</td>
+                            <td>{{ subject.unit }}</td>
+                            <td>{{ subject.day }}</td>
+                            <td>{{ subject.professor }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No subjects enrolled</p>
+        {% endif %}
+    </div>
+
+<!-- Edit button -->
+<a href="{% url 'edit_profile' %}" class="edit-btn">Edit Profile</a>
+</div>
+{% endblock %}

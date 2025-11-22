@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title%}{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+<body>
+    <body class="{% block body_class %}{% endblock %}">
+    {% if user.is_authenticated %}
+        {% include "includes/nav.html" %}
+    {% endif %}
+
+    <main class="main-center">
+        <div class="login-wrapper">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    {% if user.is_authenticated %}
+        {% include "includes/footer.html" %}
+    {% endif %}
+</body>
+
+</html>

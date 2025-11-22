@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Educational Attainment{% endblock %}
+
+{% block content %}
+<h2>Educational Background</h2>
+
+{% if education %}
+    <p><strong>Elementary School:</strong> {{ education.elementary_school }}</p>
+    <p><strong>High School:</strong> {{ education.HS_school }}</p>
+    <p><strong>Senior High School:</strong> {{ education.SHS_school }}</p>
+    <p><strong>College:</strong> {{ education.College_school }}</p>
+    <p><strong>Elementary Award:</strong> {{ education.elementary_award }}</p>
+{% else %}
+    <p>No educational attainment found.</p>
+{% endif %}
+{% endblock %}
+
+
+<!-- {% extends "base.html" %}
+{% block title %}Educational Background{% endblock %}
+
+{% block content %}
+<h1>Educational Background</h1>
+
+{% for edu in education %}
+    <strong>Elementary:</strong> {{ edu.elementary_school }} ({{ edu.elementary_award }}) <br>
+    <strong>High School:</strong> {{ edu.hs_school }} <br>
+    <strong>SHS:</strong> {{ edu.shs_school }} <br>
+    <strong>College:</strong> {{ edu.college_school }} <br>
+    <hr>
+{% endfor %}
+{% endblock %} -->
+
