@@ -612,3 +612,25 @@ body.main-site {
 .login-again-btn:hover {
     background-color: #d94434;
 }
+
+/* ---------- Footer ---------- */
+footer {
+    text-align: center;
+    padding: 15px 0;
+    background: #f4c66b;
+    color: #e64c3c;
+    font-weight: bold;
+    font-size: 16px;
+    border-top: 3px solid #f4c66b;
+    box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+footer::after {
+    content: "🐾";
+    margin-left: 5px; /* a little space after the text */
+    font-size: 20px;
+    position: static; /* remove absolute positioning */
+}
+
+

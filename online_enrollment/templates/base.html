@@ -8,8 +8,7 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 </head>
-<body>
-    <body class="{% block body_class %}{% endblock %}">
+<body class="{% block body_class %}{% endblock %}">
     {% if user.is_authenticated %}
         {% include "includes/nav.html" %}
     {% endif %}
